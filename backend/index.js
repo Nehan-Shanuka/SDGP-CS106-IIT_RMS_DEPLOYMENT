@@ -18,6 +18,10 @@ app.use(express.json());
 
 app.use(cors());
 
+app.use(cors({
+  origin: 'https://iit-rms-deployment-test1.vercel.app'
+}));
+
 app.get("/", (request, response) => {
   console.log(request);
   return response.status(234).send("Welcome to IIT RMS server!");
