@@ -28,7 +28,7 @@ export default function PlannedSessions() {
   };
 
   useEffect(() => {
-    const url = `https://sdgp-cs106-iit-rms-deployment.onrender.com/reservations?confirmation=${confirmation}&subject=${moduleName}&buildingID=${buildingID}&type=${type}`;
+    const url = `https://iit-rms-deployment-backend-test1.vercel.app/reservations?confirmation=${confirmation}&subject=${moduleName}&buildingID=${buildingID}&type=${type}`;
     axios
       .get(url)
       .then((response) => {
@@ -40,7 +40,7 @@ export default function PlannedSessions() {
   }, [confirmation, moduleName, buildingID, type, day, selectedDate]);
 
   useEffect(() => {
-    const url = `https://sdgp-cs106-iit-rms-deployment.onrender.com/halls?buildingID=${buildingID}`;
+    const url = `https://iit-rms-deployment-backend-test1.vercel.app/halls?buildingID=${buildingID}`;
     axios
       .get(url)
       .then((response) => {
@@ -53,7 +53,7 @@ export default function PlannedSessions() {
 
   useEffect(() => {
     axios
-      .get("https://sdgp-cs106-iit-rms-deployment.onrender.com/buildings")
+      .get("https://iit-rms-deployment-backend-test1.vercel.app/buildings")
       .then((response) => {
         setBuildings(response.data);
       })

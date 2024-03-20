@@ -27,7 +27,7 @@ function ProfilePage({ userFromDB }) {
   // useEffect(() => {
   //   const fetchData = async () => {
   //     try {
-  //       const response = await axios.get("https://sdgp-cs106-iit-rms-deployment.onrender.com/users");
+  //       const response = await axios.get("https://iit-rms-deployment-backend-test1.vercel.app/users");
   //       console.log("Response data:", response.data);
   //       const currentUserEmail = 'example@example.com'; // Replace this with the actual email
   //       const currentUser = response.data.find(user => user.email === user.email);

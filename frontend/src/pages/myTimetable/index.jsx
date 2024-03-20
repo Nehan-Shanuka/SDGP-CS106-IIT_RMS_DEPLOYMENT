@@ -176,7 +176,7 @@ export default function MyTimetable() {
   };
 
   useEffect(() => {
-    const url = `https://sdgp-cs106-iit-rms-deployment.onrender.com/timetables`;
+    const url = `https://iit-rms-deployment-backend-test1.vercel.app/timetables`;
     axios
       .get(url)
       .then((response) => {

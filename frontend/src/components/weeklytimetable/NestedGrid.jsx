@@ -29,7 +29,7 @@ const NestedGrid = ({ user }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://sdgp-cs106-iit-rms-deployment.onrender.com/timetables"
+          "https://iit-rms-deployment-backend-test1.vercel.app/timetables"
         );
         console.log("Response data:", response.data);
         setTimetableData(response.data);

@@ -31,7 +31,7 @@ export default function App() {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
-          "https://sdgp-cs106-iit-rms-deployment.onrender.com/users"
+          "https://iit-rms-deployment-backend-test1.vercel.app/users"
         );
         if (response.status === 200) {
           setUsers(response.data);
