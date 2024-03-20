@@ -28,7 +28,9 @@ const NestedGrid = ({ user }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5555/timetables");
+        const response = await axios.get(
+          "https://sdgp-cs106-iit-rms-deployment.onrender.com/timetables"
+        );
         console.log("Response data:", response.data);
         setTimetableData(response.data);
         setLoading(false);
@@ -142,36 +144,41 @@ const NestedGrid = ({ user }) => {
                                         sx={{ color: "#fff" }}
                                       >
                                         {/* <span style={{ fontSize: "20px" }}> */}
-                                          <div className="flex justify-between mx-0">
-                                            <div className="text-[1.4rem]">
-                                              {
-                                                session.timeSessions[timeKey]
-                                                  ?.hallID
-                                              }
-                                            </div>
-                                            <div className="flex items-center bg-[#D9D9D9] w-fit text-black rounded-md text-[1.2rem] text-center px-1 align-center">
-                                              <div>
-                                                {session.timeSessions[
+                                        <div className="flex justify-between mx-0">
+                                          <div className="text-[1.4rem]">
+                                            {
+                                              session.timeSessions[timeKey]
+                                                ?.hallID
+                                            }
+                                          </div>
+                                          <div className="flex items-center bg-[#D9D9D9] w-fit text-black rounded-md text-[1.2rem] text-center px-1 align-center">
+                                            <div>
+                                              {session.timeSessions[
                                                 timeKey
                                               ]?.type
                                                 .replace("Lecture", "LEC")
                                                 .replace("Tutorial", "TUT")}
-                                              </div>
                                             </div>
-                                            <div className="flex items-center bg-[#D9D9D9] w-fit text-black rounded-full text-[1.2rem] text-center px-1 align-center">
-                                              <div>
-                                                {
+                                          </div>
+                                          <div className="flex items-center bg-[#D9D9D9] w-fit text-black rounded-full text-[1.2rem] text-center px-1 align-center">
+                                            <div>
+                                              {
                                                 session.timeSessions[timeKey]
                                                   ?.buildingID
                                               }
-                                              </div>
-                                              
                                             </div>
                                           </div>
+                                        </div>
                                         {/* </span> */}
                                         <div>
                                           <div className="text-sm my-1">
-                                            {timeKey === "time_01" ? "08.30 - 10.30" : timeKey === "time_02" ? "10.30 - 12.30" : timeKey === "time_03" ? "13.30 - 15.30" : "15.30 - 17.30"}
+                                            {timeKey === "time_01"
+                                              ? "08.30 - 10.30"
+                                              : timeKey === "time_02"
+                                              ? "10.30 - 12.30"
+                                              : timeKey === "time_03"
+                                              ? "13.30 - 15.30"
+                                              : "15.30 - 17.30"}
                                           </div>
                                         </div>
                                         <div className="text-base my-2">

@@ -19,7 +19,7 @@ export default function Reservation({ isSidebarOpen }) {
   };
 
   useEffect(() => {
-    const url = `http://localhost:5555/halls?buildingID=${buildingID}`;
+    const url = `https://sdgp-cs106-iit-rms-deployment.onrender.com/halls?buildingID=${buildingID}`;
     axios
       .get(url)
       .then((response) => {
@@ -32,7 +32,7 @@ export default function Reservation({ isSidebarOpen }) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5555/buildings")
+      .get("https://sdgp-cs106-iit-rms-deployment.onrender.com/buildings")
       .then((response) => {
         setBuildings(response.data);
       })
@@ -64,7 +64,10 @@ export default function Reservation({ isSidebarOpen }) {
           }}
         >
           <div>
-            <Calender onDateChange={handleDateChange} onDayChange={handleDayChange} />
+            <Calender
+              onDateChange={handleDateChange}
+              onDayChange={handleDayChange}
+            />
             <Location onLocationChange={handleLocationChange} />
           </div>
 

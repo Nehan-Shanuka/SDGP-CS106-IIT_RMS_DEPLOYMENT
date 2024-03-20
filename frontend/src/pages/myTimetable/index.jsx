@@ -176,7 +176,7 @@ export default function MyTimetable() {
   };
 
   useEffect(() => {
-    const url = `http://localhost:5555/timetables`;
+    const url = `https://sdgp-cs106-iit-rms-deployment.onrender.com/timetables`;
     axios
       .get(url)
       .then((response) => {

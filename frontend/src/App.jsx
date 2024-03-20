@@ -30,7 +30,9 @@ export default function App() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get("http://localhost:5555/users");
+        const response = await axios.get(
+          "https://sdgp-cs106-iit-rms-deployment.onrender.com/users"
+        );
         if (response.status === 200) {
           setUsers(response.data);
           // setOnBoardUser(response.data[0]);
@@ -41,7 +43,6 @@ export default function App() {
     };
     fetchUser();
   }, []);
-
 
   useEffect(() => {
     // Simulate loading time
@@ -74,10 +75,11 @@ export default function App() {
 
   return (
     <>
-      {loading ? <SplashScreen /> : (
-      !isAuthenticated ? (
+      {loading ? (
+        <SplashScreen />
+      ) : !isAuthenticated ? (
         <Authenticator userOnBoard={handleUser} />
-      ) : (isWelcome ? (
+      ) : isWelcome ? (
         <Home onStateChange={handleStateChange} />
       ) : (
         !isWelcome && (
@@ -100,21 +102,27 @@ export default function App() {
                 <Route path="/student-grouping" />
                 {userFromDB.adminPrivilege ? (
                   <Route
-                  path="/review-requests"
-                  element={<ExpandableReviewReservation />}
-                />
+                    path="/review-requests"
+                    element={<ExpandableReviewReservation />}
+                  />
                 ) : (
                   <Route path="/review-requests" element={<SorryCall />} />
                 )}
                 <Route path="/group-timetable" element={<Grouptimetable />} />
-                <Route path="/weekly-timetble" element={<WeeklyTimetable user={userFromDB} />} />
-                <Route path="/my-profile" element={<Userprofile userFromDB={userFromDB} />} />
+                <Route
+                  path="/weekly-timetble"
+                  element={<WeeklyTimetable user={userFromDB} />}
+                />
+                <Route
+                  path="/my-profile"
+                  element={<Userprofile userFromDB={userFromDB} />}
+                />
                 <Route path="/data-upload" element={<UploadsPage />} />
               </Routes>
             </main>
           </div>
         )
-      )))}
+      )}
     </>
   );
 }

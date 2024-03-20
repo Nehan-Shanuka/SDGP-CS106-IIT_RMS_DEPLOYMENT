@@ -107,10 +107,14 @@ export default function RequestForm({
               // console.log(disabled);
               // console.log(plannedSession.reservations.time_01 === null && disabled[0]);
               setDisabled([
-                plannedSession.reservations.time_01 !== null || timetableSession.reservations.time_01 !== null,
-                plannedSession.reservations.time_02 !== null || timetableSession.reservations.time_02 !== null,
-                plannedSession.reservations.time_03 !== null || timetableSession.reservations.time_03 !== null,
-                plannedSession.reservations.time_04 !== null || timetableSession.reservations.time_04 !== null,
+                plannedSession.reservations.time_01 !== null ||
+                  timetableSession.reservations.time_01 !== null,
+                plannedSession.reservations.time_02 !== null ||
+                  timetableSession.reservations.time_02 !== null,
+                plannedSession.reservations.time_03 !== null ||
+                  timetableSession.reservations.time_03 !== null,
+                plannedSession.reservations.time_04 !== null ||
+                  timetableSession.reservations.time_04 !== null,
               ]);
               // console.log(disabled);
             }
@@ -122,17 +126,24 @@ export default function RequestForm({
             // console.log(plannedSession.reservations.time_02 !== null)
             // console.log(plannedSession.reservations.time_03 !== null)
             // console.log(plannedSession.reservations.time_04 !== null)
-            console.log(plannedSession.reservations.time_01 !== null || timetableSession.reservations.time_01 !== null," ",
-              plannedSession.reservations.time_02 !== null || timetableSession.reservations.time_02 !== null," ",
-              plannedSession.reservations.time_03 !== null || timetableSession.reservations.time_03 !== null," ",
-              plannedSession.reservations.time_04 !== null || timetableSession.reservations.time_04 !== null,)
+            console.log(
+              plannedSession.reservations.time_01 !== null ||
+                timetableSession.reservations.time_01 !== null,
+              " ",
+              plannedSession.reservations.time_02 !== null ||
+                timetableSession.reservations.time_02 !== null,
+              " ",
+              plannedSession.reservations.time_03 !== null ||
+                timetableSession.reservations.time_03 !== null,
+              " ",
+              plannedSession.reservations.time_04 !== null ||
+                timetableSession.reservations.time_04 !== null
+            );
           });
         }
         if (dateNotFounded) {
           setDisabled([false, false, false, false]);
         }
-
-        
       });
 
       // hall.plannedSessions.forEach((plannedSession) => {
@@ -164,7 +175,7 @@ export default function RequestForm({
 
     // console.log("Entered")
     // if (dateSelected) {
-      handleCheckBoxes();
+    handleCheckBoxes();
   }, [dateSelected]);
 
   // console.log(dateSelected, dayFromCalender)
@@ -172,21 +183,24 @@ export default function RequestForm({
   // Handle the request to make a reservation
   const handleRequest = async () => {
     axios
-      .post(`http://localhost:5555/reservations/${hallID}`, {
-        date: formatedDate,
-        time: checked[0]
-          ? "08.30 - 10.30"
-          : checked[1]
-          ? "10.30 - 12.30"
-          : checked[2]
-          ? "13.30 - 15.30"
-          : "15.30 - 17.30",
-        subject: moduleName,
-        lecturer: "Mr. Sampath Perera",
-        type: radioValue,
-        confirmation: false,
-        description: description,
-      })
+      .post(
+        `https://sdgp-cs106-iit-rms-deployment.onrender.com/reservations/${hallID}`,
+        {
+          date: formatedDate,
+          time: checked[0]
+            ? "08.30 - 10.30"
+            : checked[1]
+            ? "10.30 - 12.30"
+            : checked[2]
+            ? "13.30 - 15.30"
+            : "15.30 - 17.30",
+          subject: moduleName,
+          lecturer: "Mr. Sampath Perera",
+          type: radioValue,
+          confirmation: false,
+          description: description,
+        }
+      )
       .then((response) => {
         alert("Reservation added successfully!");
       })
